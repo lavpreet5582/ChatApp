@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat Room</title>
+</head>
+
+<body>
+    <h2>Chat Room</h2>
+    <div id="chat-box"></div>
+    <input type="text" id="message-input" placeholder="Type your message...">
+    <button onclick="sendMessage()">Send</button>
+
+    <script>
+        const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzQzMDc3MDM2LCJpYXQiOjE3NDMwNzY3MzYsImp0aSI6ImRlMDg2OTVhY2RiYjQ1N2E5M2E5MDRiYTQxOGQ4OWZjIiwidXNlcl9pZCI6MX0.vCtUdKj7r3HyZoZHwpYryy-YxGkdlemiNZpdAjwlyfM"
+        const socket = new WebSocket("ws://localhost:8000/ws/chat/general/?token=" + token);
+
+        socket.onmessage = function (event) {
+            const data = JSON.parse(event.data);
+            const chatBox = document.getElementById("chat-box");
+            chatBox.innerHTML += `<p><strong>${data.user}:</strong> ${data.message}</p>`;
+        };
+
+        function sendMessage() {
+            const input = document.getElementById("message-input");
+            const message = input.value.trim();
+            if (message) {
+                socket.send(JSON.stringify({ message: message }));
+                input.value = "";
+            }
+        }
+    </script>
+</body>
+
+</html>
