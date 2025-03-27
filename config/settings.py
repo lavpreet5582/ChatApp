@@ -9,7 +9,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = ["*"]
 
-CSRF_TRUSTED_ORIGINS = ["localhost", "127.0.0.1"]
+CSRF_TRUSTED_ORIGINS = ["http://localhost:8000", "http://127.0.0.1:8000"]
 # SECURE_PROXY_SSL_HEADER = ("HTTP_X_FORWARDED_PROTO", "https")
 
 
@@ -90,8 +90,8 @@ REST_FRAMEWORK = {
 }
 
 STATIC_URL = "/static/"
-STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, "static")
-]  # Optional if you have a 'static' folder
+# STATICFILES_DIRS = [
+#     os.path.join(BASE_DIR, "static")
+# ]  # Optional if you have a 'static' folder
 STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")  # Required for collectstatic
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
