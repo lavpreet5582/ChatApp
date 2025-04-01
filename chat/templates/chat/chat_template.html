@@ -14,7 +14,7 @@
     <button onclick="sendMessage()">Send</button>
 
     <script>
-        const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzQzMDc3MDM2LCJpYXQiOjE3NDMwNzY3MzYsImp0aSI6ImRlMDg2OTVhY2RiYjQ1N2E5M2E5MDRiYTQxOGQ4OWZjIiwidXNlcl9pZCI6MX0.vCtUdKj7r3HyZoZHwpYryy-YxGkdlemiNZpdAjwlyfM"
+        const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzQzMTQzMTUyLCJpYXQiOjE3NDMxNDI4NTIsImp0aSI6ImE4YmQ2NTkxNWZkZDQ2NGZiMDU0MDM5ZjU0NjVmM2Y0IiwidXNlcl9pZCI6MX0.pzkCXmPieNrnTG1FmS8TPJ_BPwRfVD9mW01-jQDT_Ak"
         const socket = new WebSocket("ws://localhost:8000/ws/chat/general/?token=" + token);
 
         socket.onmessage = function (event) {
